@@ -37,7 +37,7 @@ echo "Setting database configuration prompts..."
 sudo debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password password $DBPASS"
 sudo debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password_again password $DBPASS"
 echo "Installing Laravel dependencies..."
-sudo apt-get -y -qq install apache2 mysql-server php7.2 php7.2-bcmath php7.2-json php7.2-mbstring php7.2-xml php7.2-mysql php7.2-common php7.2-opcache php7.2-curl libapache2-mod-php7.2 nodejs vim
+sudo apt-get -y -qq install apache2 mysql-server php7.2 php7.2-bcmath php7.2-json php7.2-mbstring php7.2-xml php7.2-mysql php7.2-common php7.2-opcache php7.2-curl libapache2-mod-php7.2 nodejs vim unzip composer
 echo "Laravel dependencies installed!"
 
 # Configure MySQL
@@ -62,9 +62,12 @@ cd /vagrant
 npm config set loglevel silent
 npm install &>/dev/null
 npm run dev &>/dev/null
+echo "Node mudules done!"
+echo "Componer install and migrations..."
+composer install
 php artisan migrate
 php artisan db:seed --class=MovesTableSeeder
-echo "Node mudules done!"
+echo "Composer and migrations done!"
 
 # Configure Apache
 echo "### CONFIGURE APACHE"
