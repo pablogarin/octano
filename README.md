@@ -7,6 +7,6 @@ This project uses **Vagrant** with **VirtualBox** to setup a virtual environment
 
 After installing both, you just have to run vagrant up and the system will install a Debian virtual machine and the it will proceed to install all its dependencies and configure the server for the web page to work.
 
-´´´bash
+```bash
 vagrant up
-´´´
+```
