@@ -5,3 +5,4 @@ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key a
 sudo apt-get -y -q=2 update
 sudo apt-get -y -q=2 upgrade
 sudo apt-get -y -q=2 install vagrant virtualbox-6.0
+vagrant up
