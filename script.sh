@@ -74,12 +74,11 @@ sudo sed -i 's/www-data/vagrant/g' /etc/apache2/envvars
 TEMPLATE=$(cat /etc/apache2/sites-available/000-default.conf)
 TEMPLATE="${TEMPLATE//\/var\/www\/html/\/var\/www\/vagrant\/public}"
 TEMPLATE="${TEMPLATE//\#ServerName www.example.com/ServerName $SITENAME}"
+TEMPLATE=$(echo "$TEMPLATE" | sed "13a\ \
+        <Directory /var/www/vagrant/public>\n\
+                AllowOverride all\n\
+        </Directory>")
 echo "$TEMPLATE" > $HOME/$CONFFILE
-sed "13a\
-	<Directory /var/www/vagrant/public>
-		AllowOverride all
-	</Directory>
-" $HOME/$CONFFILE > $HOME/$CONFFILE
 sudo mv $HOME/$CONFFILE /etc/apache2/sites-available/$CONFFILE
 echo "Created config file pointing to $SITENAME"
 sudo a2ensite $CONFFILE

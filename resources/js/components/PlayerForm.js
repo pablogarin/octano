@@ -36,7 +36,7 @@ export default class PlayerForm extends Component {
         return (
             <div className="card">
                 <div className="card-header">
-                    <h2 className="lead">Enter Palyer's Names</h2>
+                    <h2 className="lead">Enter Player's Names</h2>
                 </div>
                 <div className="card-body">
                     <h5>Player {this.props.number == 0 ? 'One' : 'Two'}</h5>

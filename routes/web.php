@@ -11,8 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
-
-Route::get('games', 'HomeController@showPlayers');
+Route::get('/', "HomeController@index");
