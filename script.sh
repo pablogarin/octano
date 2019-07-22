@@ -37,8 +37,14 @@ echo "Setting database configuration prompts..."
 sudo debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password password $DBPASS"
 sudo debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password_again password $DBPASS"
 echo "Installing Laravel dependencies..."
-sudo apt-get -y -qq install apache2 mysql-server php7.2 php7.2-bcmath php7.2-json php7.2-mbstring php7.2-xml php7.2-mysql php7.2-common php7.2-opcache php7.2-curl libapache2-mod-php7.2 nodejs vim unzip composer
+sudo apt-get -y -qq install apache2 mysql-server php7.2 php7.2-bcmath php7.2-json php7.2-mbstring php7.2-xml php7.2-mysql php7.2-common php7.2-opcache php7.2-curl libapache2-mod-php7.2 nodejs vim unzip
 echo "Laravel dependencies installed!"
+
+echo "Installing composer"
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+echo "Composer installed"
 
 # Configure MySQL
 echo "### CONFIGURE MYSQL"
